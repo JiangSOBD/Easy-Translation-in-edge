@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lingua Selection 设置</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="eyebrow">EDGE 扩展</div>
+      <h1>划词翻译设置</h1>
+      <p>配置你自己的模型 API。密钥保存在此浏览器的扩展本地存储中，不会同步到其他设备。</p>
+    </header>
+
+    <section class="card">
+      <h2>模型服务</h2>
+      <form id="provider-form">
+        <label for="provider">服务商</label>
+        <select id="provider" name="provider">
+          <option value="deepseek">DeepSeek</option>
+          <option value="kimi">Kimi (Moonshot)</option>
+          <option value="glm">智谱 GLM</option>
+          <option value="custom">自定义 OpenAI 兼容接口</option>
+        </select>
+
+        <label for="api-url">API 完整地址</label>
+        <input id="api-url" name="apiUrl" type="url" required autocomplete="url" spellcheck="false">
+
+        <label for="model">模型名称</label>
+        <input id="model" name="model" type="text" required autocomplete="off" spellcheck="false">
+
+        <label for="api-key">API Key</label>
+        <div class="secret-field">
+          <input id="api-key" name="apiKey" type="password" autocomplete="new-password" spellcheck="false">
+          <button id="toggle-key" class="secondary" type="button">显示</button>
+        </div>
+        <p class="hint">翻译和 AI 概念解读会直接调用所选服务商并产生相应费用。当前原型的音标由模型生成，可能不如专业词典准确。请勿在公共设备上保存密钥。</p>
+        <div class="actions">
+          <button class="primary" type="submit">保存设置</button>
+          <button id="test-provider" class="secondary" type="button">测试连接</button>
+          <button id="clear-key" class="secondary" type="button">删除 API Key</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>划词网站权限</h2>
+      <p>只在你授权的网站监听选区。授权或撤销网站后，重新加载已打开的页面使设置生效。</p>
+      <form id="site-form" class="site-form">
+        <label for="site-url">添加一个网站</label>
+        <div class="inline">
+          <input id="site-url" type="url" placeholder="https://example.com" autocomplete="url">
+          <button class="secondary" type="submit">添加网站</button>
+        </div>
+      </form>
+      <button id="all-sites" class="secondary" type="button">启用所有 HTTP/HTTPS 网站</button>
+      <ul id="site-list" class="site-list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>数据与隐私</h2>
+      <p>基础翻译只向模型发送选中文字及其所在句子。整页背景仅在你于页面工具条主动启用后，用于 AI 概念解读。扩展不会记录请求正文或密钥到日志。</p>
+      <button id="clear-cache" class="secondary" type="button">清除本次会话翻译缓存</button>
+    </section>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

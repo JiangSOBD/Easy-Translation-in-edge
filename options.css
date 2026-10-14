@@ -1,0 +1,84 @@
+:root {
+  color-scheme: light;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172033;
+  background: #f5f7fb;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+.page {
+  width: min(760px, calc(100% - 32px));
+  margin: 48px auto;
+}
+
+header { margin-bottom: 24px; }
+.eyebrow { color: #2457d6; font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+h1 { margin: 7px 0; font-size: 30px; }
+h2 { margin: 0 0 14px; font-size: 18px; }
+p { color: #586477; line-height: 1.6; }
+
+.card {
+  padding: 22px;
+  margin: 16px 0;
+  background: #fff;
+  border: 1px solid #e1e6ef;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, .04);
+}
+
+label { display: block; margin: 14px 0 6px; font-size: 13px; font-weight: 600; }
+input, select {
+  width: 100%;
+  padding: 10px 12px;
+  color: inherit;
+  font: inherit;
+  border: 1px solid #cbd3df;
+  border-radius: 8px;
+  background: white;
+}
+input:focus, select:focus { outline: 2px solid #adc2ff; border-color: #2457d6; }
+
+.secret-field, .inline, .actions { display: flex; gap: 8px; align-items: center; }
+.secret-field input { min-width: 0; }
+.inline input { flex: 1; min-width: 0; }
+.hint { margin: 7px 0 0; font-size: 12px; }
+
+button {
+  padding: 9px 13px;
+  font: inherit;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+button:disabled { opacity: .6; cursor: wait; }
+.primary { color: white; background: #2457d6; }
+.primary:hover { background: #1948be; }
+.secondary { color: #26344a; background: #edf1f7; }
+.secondary:hover { background: #dfe6f0; }
+.actions { margin-top: 18px; }
+
+.site-list { padding-left: 0; list-style: none; }
+.site-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-top: 1px solid #edf0f4;
+}
+.site-list button { color: #a32b20; background: #fff0ee; }
+.status { min-height: 24px; font-size: 13px; }
+.status.error { color: #b42318; }
+.status.success { color: #16834c; }
+
+@media (max-width: 520px) {
+  .page { margin: 24px auto; }
+  .card { padding: 16px; }
+  h1 { font-size: 25px; }
+  .inline { align-items: stretch; flex-direction: column; }
+}
